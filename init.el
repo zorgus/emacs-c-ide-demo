@@ -24,7 +24,7 @@
 (require 'setup-cedet)
 (require 'setup-editing)
 
-
+(load-file "~/.emacs.d/my.el")
 
 ;; function-args
 ;; (require 'function-args)
