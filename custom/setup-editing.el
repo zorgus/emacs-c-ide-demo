@@ -64,10 +64,10 @@
   (add-hook 'prog-mode-hook 'clean-aindent-mode))
 
 ;; Package: dtrt-indent
-(use-package dtrt-indent
-  :init
-  (dtrt-indent-mode 1)
-  (setq dtrt-indent-verbosity 0))
+;; (use-package dtrt-indent
+;;   :init
+;;   (dtrt-indent-mode 1)
+;;   (setq dtrt-indent-verbosity 0))
 
 ;; Package: ws-butler
 (use-package ws-butler
