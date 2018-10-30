@@ -12,7 +12,10 @@
 (set-frame-font "Monaco 13" nil t)
 (setq make-backup-files nil) ; stop creating backup~ files
 (setq auto-save-default nil) ; stop creating #autosave# files
-(global-linum-mode)
+(if (version<= "26.0.50" emacs-version)
+  (global-display-line-numbers-mode)
+  ((global-linum-mode)
+   (setq linum-format "%4d \u2502 ")))
 
 (use-package dracula-theme
   :config
@@ -33,18 +36,32 @@
 ;;   (setq org-plantuml-jar-path (expand-file-name "/Users/user/local/platuml/plantuml.jar")))
 
 ;; company-mode (auto completion)
-(setq company-dabbrev-downcase nil)
+(use-package company
+  :config
+  (setq company-dabbrev-downcase nil))
 
 
 (use-package go-mode
   :config
-  (add-hook 'before-save-hook 'gofmt-before-save))
+  (add-hook 'go-mode-hook 'helm-gtags-mode)
+  (defun my-go-mode-hook ()
+    (add-hook 'before-save-hook 'gofmt-before-save))
+  (add-hook 'go-mode-hook 'my-go-mode-hook)
+  (setenv "GOPATH" "~/project/go")
+)
 
-(global-set-key (kbd "C-c p p") 'projectile-switch-project)
+;; projectile
+(use-package projectile
+  :config
+  (projectile-global-mode)
+  (define-key projectile-mode-map (kbd "C-c p") #'projectile-command-map))
 
 ;; clang-format
 (use-package clang-format
   :config
-;; (fset 'c-indent-region 'clang-format-region)
-(global-set-key (kbd "C-M-\\") 'clang-format-region)
-(global-set-key (kbd "C-i") 'clang-format))
+  (defun my-c++-mode-hook ()
+    (fset 'c-indent-region 'clang-format-region)
+    (global-set-key (kbd "C-c b") 'clang-format-region)
+    (global-set-key (kbd "C-c c") 'clang-format))
+  (add-hook 'c++-mode-hook 'my-c++-mode-hook)
+)
