@@ -8,8 +8,8 @@
   (setq exec-path (append '("/usr/local/bin")
                           exec-path)))
 
-(set-default-font "Monaco 13")
-(set-frame-font "Monaco 13" nil t)
+(set-default-font "Monaco 15")
+(set-frame-font "Monaco 15" nil t)
 (setq make-backup-files nil) ; stop creating backup~ files
 (setq auto-save-default nil) ; stop creating #autosave# files
 (if (version<= "26.0.50" emacs-version)
@@ -19,7 +19,8 @@
 
 (use-package dracula-theme
   :config
-  (load-theme 'dracula t))
+  (when (window-system)
+    (load-theme 'dracula t)))
 
 (use-package find-file-in-repository
   :config
@@ -62,6 +63,6 @@
   (defun my-c++-mode-hook ()
     (fset 'c-indent-region 'clang-format-region)
     (global-set-key (kbd "C-c b") 'clang-format-region)
-    (global-set-key (kbd "C-c c") 'clang-format))
+    (global-set-key (kbd "C-c c") 'clang-format-buffer))
   (add-hook 'c++-mode-hook 'my-c++-mode-hook)
 )
