@@ -8,8 +8,8 @@
   (setq exec-path (append '("/usr/local/bin")
                           exec-path)))
 
-(set-default-font "Monaco 15")
-(set-frame-font "Monaco 15" nil t)
+(set-default-font "Monaco 11")
+(set-frame-font "Monaco 11" nil t)
 (setq make-backup-files nil) ; stop creating backup~ files
 (setq auto-save-default nil) ; stop creating #autosave# files
 (if (version<= "26.0.50" emacs-version)
@@ -17,10 +17,18 @@
   ((global-linum-mode)
    (setq linum-format "%4d \u2502 ")))
 
-(use-package dracula-theme
-  :config
-  (when (window-system)
-    (load-theme 'dracula t)))
+(add-hook 'c-mode-hook'
+          (lambda ()
+            (c-set-style "bsd")
+            (setq default-tab-width 4)
+            (setq c-basic-offset 4)
+            (setq indent-tabs-mode t)))
+
+(use-package dracula-theme)
+  ;; :config
+  ;; (when (window-system)
+  ;;   (load-theme 'dracula t)))
+(load-theme 'deeper-blue t)
 
 (use-package find-file-in-repository
   :config
@@ -55,14 +63,22 @@
 (use-package projectile
   :config
   (projectile-global-mode)
-  (define-key projectile-mode-map (kbd "C-c p") #'projectile-command-map))
+  (define-key projectile-mode-map (kbd "C-c p") #'projectile-command-map)
+  (setq projectile-indexing-method 'native))
 
 ;; clang-format
 (use-package clang-format
   :config
   (defun my-c++-mode-hook ()
-    (fset 'c-indent-region 'clang-format-region)
+    ;;(fset 'c-indent-region 'clang-format-region)
     (global-set-key (kbd "C-c b") 'clang-format-region)
     (global-set-key (kbd "C-c c") 'clang-format-buffer))
   (add-hook 'c++-mode-hook 'my-c++-mode-hook)
+  (add-hook 'c-mode-hook 'my-c++-mode-hook)
+)
+
+(use-package slime
+  :config
+  (load (expand-file-name "~/.quicklisp/slime-helper.el"))
+  (setq inferior-lisp-program "sbcl")
 )
