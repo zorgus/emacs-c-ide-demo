@@ -88,5 +88,6 @@
   (evil-mode 1)
   (add-hook 'prog-mode-hook #'(lambda () (modify-syntax-entry ?_ "w")))
 )
+(use-package evil-magit)
 
 (use-package magit)
