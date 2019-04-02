@@ -24,6 +24,9 @@
             (setq c-basic-offset 4)
             (setq indent-tabs-mode nil)))
 
+(add-hook 'prog-mode-hook #'(lambda () (modify-syntax-entry ?_ "w")))
+(add-hook 'emacs-lisp-mode-hook #'(lambda () (modify-syntax-entry ?- "w")))
+
 (use-package dracula-theme)
   ;; :config
   ;; (when (window-system)
@@ -84,10 +87,22 @@
 )
 
 (use-package evil
+  :ensure t
+  :init
+  (setq evil-want-integration t) ;; This is optional since it's already set to t by default.
+  (setq evil-want-keybinding nil)
+  (setq evil-want-C-u-scroll t)
   :config
   (evil-mode 1)
-  (add-hook 'prog-mode-hook #'(lambda () (modify-syntax-entry ?_ "w")))
 )
+
+;; (use-package evil-collection
+;;   :after evil
+;;   :ensure t
+;;   :config
+;;   (evil-collection-init)
+;; )
+
 (use-package evil-magit)
 
 (use-package magit)
