@@ -8,8 +8,8 @@
   (setq exec-path (append '("/usr/local/bin")
                           exec-path)))
 
-(set-default-font "Monaco 11")
-(set-frame-font "Monaco 11" nil t)
+;; (set-default-font "Monaco 13")
+;; (set-frame-font "Monaco 13" nil t)
 (setq make-backup-files nil) ; stop creating backup~ files
 (setq auto-save-default nil) ; stop creating #autosave# files
 (if (version<= "26.0.50" emacs-version)
@@ -22,7 +22,7 @@
             (c-set-style "bsd")
             (setq default-tab-width 4)
             (setq c-basic-offset 4)
-            (setq indent-tabs-mode t)))
+            (setq indent-tabs-mode nil)))
 
 (use-package dracula-theme)
   ;; :config
@@ -82,3 +82,11 @@
   (load (expand-file-name "~/.quicklisp/slime-helper.el"))
   (setq inferior-lisp-program "sbcl")
 )
+
+(use-package evil
+  :config
+  (evil-mode 1)
+  (add-hook 'prog-mode-hook #'(lambda () (modify-syntax-entry ?_ "w")))
+)
+
+(use-package magit)
