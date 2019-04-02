@@ -106,3 +106,8 @@
 (use-package evil-magit)
 
 (use-package magit)
+
+(use-package which-key :ensure t
+  :diminish which-key-mode
+  :config (progn (which-key-mode)
+                 (which-key-setup-side-window-bottom)))
