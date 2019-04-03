@@ -68,15 +68,15 @@
   :config
   (projectile-global-mode)
   (define-key projectile-mode-map (kbd "C-c p") #'projectile-command-map)
-  (setq projectile-indexing-method 'native))
+  (setq projectile-indexing-method 'hybrid))
 
 ;; clang-format
 (use-package clang-format
   :config
   (defun my-c++-mode-hook ()
     ;;(fset 'c-indent-region 'clang-format-region)
-    (global-set-key (kbd "C-c b") 'clang-format-region)
-    (global-set-key (kbd "C-c c") 'clang-format-buffer))
+    (global-set-key (kbd "C-c f r") 'clang-format-region)
+    (global-set-key (kbd "C-c f b") 'clang-format-buffer))
   (add-hook 'c++-mode-hook 'my-c++-mode-hook)
   (add-hook 'c-mode-hook 'my-c++-mode-hook)
 )
@@ -112,3 +112,22 @@
   :diminish which-key-mode
   :config (progn (which-key-mode)
                  (which-key-setup-side-window-bottom)))
+
+(use-package cmake-ide
+  :config
+  (setq
+   helm-make-build-dir "build"
+   helm-make-arguments "-j4"
+   cmake-ide-build-dir "build"
+   cmake-ide-cmake-opts "-DCMAKE_BUILD_TYPE=Debug -DCMAKE_EXPORT_COMPILE_COMMANDS=ON"
+   )
+  ;; (defun my-cmake-define-key ()
+  ;; (add-hook 'c-mode-hook 'my-cmake-define-key)
+  ;; (add-hook 'c++-mode-hook 'my-cmake-define-key)
+    (global-set-key (kbd "C-c c r") 'cmake-ide-run-cmake)
+    (global-set-key (kbd "C-c c c") 'cmake-ide-compile)
+)
+
+(use-package popwin
+  :config
+  (popwin-mode t))
