@@ -12,6 +12,7 @@
 ;; (set-frame-font "Monaco 13" nil t)
 (setq make-backup-files nil) ; stop creating backup~ files
 (setq auto-save-default nil) ; stop creating #autosave# files
+(setq column-number-mode t)
 (if (version<= "26.0.50" emacs-version)
   (global-display-line-numbers-mode)
   ((global-linum-mode)
@@ -96,12 +97,12 @@
   (evil-mode 1)
 )
 
-;; (use-package evil-collection
-;;   :after evil
-;;   :ensure t
-;;   :config
-;;   (evil-collection-init)
-;; )
+(use-package evil-collection
+  :after evil
+  :ensure t
+  :config
+  (evil-collection-init)
+)
 
 (use-package evil-magit)
 
