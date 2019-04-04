@@ -13,10 +13,8 @@
 (setq make-backup-files nil) ; stop creating backup~ files
 (setq auto-save-default nil) ; stop creating #autosave# files
 (setq column-number-mode t)
-(if (version<= "26.0.50" emacs-version)
-  (add-hook 'prog-mode-hook #'(lambda () (global-linum-mode))
-   (setq linum-format "%4d \u2502 "))
-  (add-hook 'prog-mode-hook #'(lambda () (global-display-line-numbers-mode))))
+(add-hook 'prog-mode-hook #'(lambda () (linum-mode t)
+                              (setq linum-format "%4d \u2502 ")))
 
 (defun my-prog-mode-hook ()
             (c-set-style "bsd")
@@ -28,6 +26,13 @@
 (add-hook 'c++-mode-hook 'my-prog-mode-hook)
 (add-hook 'prog-mode-hook #'(lambda () (modify-syntax-entry ?_ "w")))
 (add-hook 'emacs-lisp-mode-hook #'(lambda () (modify-syntax-entry ?- "w")))
+
+(set-language-environment "Korean")
+(prefer-coding-system 'utf-8)
+(when window-system
+  (set-fontset-font "fontset-default" '(#x1100 . #xffdc)  '("NanumGothicCoding" . "unicode-bmp"))
+  (set-fontset-font "fontset-default" '(#xe0bc . #xf66e) '("NanumGothicCoding" . "unicode-bmp"))
+)
 
 (use-package dracula-theme)
   ;; :config
