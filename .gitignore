@@ -1,0 +1,9 @@
+auto-save-list/
+elpa/
+semanticdb/
+*.elc
+projectile*
+recentf
+transient/
+mycustom.el
+ede-projects.el
