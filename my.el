@@ -8,23 +8,24 @@
   (setq exec-path (append '("/usr/local/bin")
                           exec-path)))
 
-;; (set-default-font "Monaco 13")
-;; (set-frame-font "Monaco 13" nil t)
+;; (set-default-font "Ubuntu Mono 12")
+;; (set-frame-font "Ubuntu Mono 12" nil t)
 (setq make-backup-files nil) ; stop creating backup~ files
 (setq auto-save-default nil) ; stop creating #autosave# files
 (setq column-number-mode t)
 (if (version<= "26.0.50" emacs-version)
-  (global-display-line-numbers-mode)
-  ((global-linum-mode)
-   (setq linum-format "%4d \u2502 ")))
+  (add-hook 'prog-mode-hook #'(lambda () (global-linum-mode))
+   (setq linum-format "%4d \u2502 "))
+  (add-hook 'prog-mode-hook #'(lambda () (global-display-line-numbers-mode))))
 
-(add-hook 'c-mode-hook'
-          (lambda ()
+(defun my-prog-mode-hook ()
             (c-set-style "bsd")
-            (setq default-tab-width 4)
+            (setq-default tab-width 4)
             (setq c-basic-offset 4)
-            (setq indent-tabs-mode nil)))
+            (setq indent-tabs-mode nil))
 
+(add-hook 'c-mode-hook 'my-prog-mode-hook)
+(add-hook 'c++-mode-hook 'my-prog-mode-hook)
 (add-hook 'prog-mode-hook #'(lambda () (modify-syntax-entry ?_ "w")))
 (add-hook 'emacs-lisp-mode-hook #'(lambda () (modify-syntax-entry ?- "w")))
 
