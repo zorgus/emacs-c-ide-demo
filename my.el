@@ -26,10 +26,9 @@
   (setq c-basic-offset 4)
   (setq indent-tabs-mode nil)
   (helm-gtags-mode))
+
 (add-hook 'c-mode-hook 'my-prog-mode-hook)
 (add-hook 'c++-mode-hook 'my-prog-mode-hook)
-;; (add-hook 'prog-mode-hook #'(lambda () (modify-syntax-entry ?_ "w")))
-;; (add-hook 'emacs-lisp-mode-hook #'(lambda () (modify-syntax-entry ?- "w")))
 
 (set-language-environment "Korean")
 (prefer-coding-system 'utf-8)
@@ -89,14 +88,12 @@
     (global-set-key (kbd "C-c f r") 'clang-format-region)
     (global-set-key (kbd "C-c f b") 'clang-format-buffer))
   (add-hook 'c++-mode-hook 'my-c++-mode-hook)
-  (add-hook 'c-mode-hook 'my-c++-mode-hook)
-  )
+  (add-hook 'c-mode-hook 'my-c++-mode-hook))
 
 (use-package slime
   :config
   (load (expand-file-name "~/.quicklisp/slime-helper.el"))
-  (setq inferior-lisp-program "sbcl")
-  )
+  (setq inferior-lisp-program "sbcl"))
 
 (use-package evil
   :ensure t
@@ -105,15 +102,15 @@
   (setq evil-want-keybinding nil)
   (setq evil-want-C-u-scroll t)
   :config
-  (evil-mode 1)
-  )
+  (setq-default evil-symbol-word-search t)
+  (evil-mode 1))
 
 (use-package evil-collection
   :after evil
   :ensure t
   :config
   (evil-collection-init)
-  )
+  (add-hook 'prog-mode-hook #'(lambda () (load "~/.emacs.d/evil-key.el"))))
 
 (use-package evil-magit)
 
@@ -132,12 +129,8 @@
    cmake-ide-build-dir "build"
    cmake-ide-cmake-opts "-DCMAKE_BUILD_TYPE=Debug -DCMAKE_EXPORT_COMPILE_COMMANDS=ON"
    )
-  ;; (defun my-cmake-define-key ()
-  ;; (add-hook 'c-mode-hook 'my-cmake-define-key)
-  ;; (add-hook 'c++-mode-hook 'my-cmake-define-key)
   (global-set-key (kbd "C-c c r") 'cmake-ide-run-cmake)
-  (global-set-key (kbd "C-c c c") 'cmake-ide-compile)
-  )
+  (global-set-key (kbd "C-c c c") 'cmake-ide-compile))
 
 (use-package popwin
   :config
