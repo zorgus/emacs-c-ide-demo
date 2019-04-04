@@ -13,32 +13,37 @@
 (setq make-backup-files nil) ; stop creating backup~ files
 (setq auto-save-default nil) ; stop creating #autosave# files
 (setq column-number-mode t)
-(add-hook 'prog-mode-hook #'(lambda () (linum-mode t)
-                              (setq linum-format "%4d \u2502 ")))
+(when (version<= "26.0.50" emacs-version )
+  (add-hook 'prog-mode-hook #'(lambda () (display-line-numbers-mode t))))
+(unless (version<= "26.0.50" emacs-version)
+  (add-hook 'prog-mode-hook #'(lambda () (linum-mode t)
+                                (setq linum-format "%4d \u2502 ")
+                                (set-face-attribute 'linum nil :foreground "gray"))))
 
 (defun my-prog-mode-hook ()
-            (c-set-style "bsd")
-            (setq-default tab-width 4)
-            (setq c-basic-offset 4)
-            (setq indent-tabs-mode nil))
-
+  (c-set-style "bsd")
+  (setq-default tab-width 4)
+  (setq c-basic-offset 4)
+  (setq indent-tabs-mode nil)
+  (helm-gtags-mode))
 (add-hook 'c-mode-hook 'my-prog-mode-hook)
 (add-hook 'c++-mode-hook 'my-prog-mode-hook)
-(add-hook 'prog-mode-hook #'(lambda () (modify-syntax-entry ?_ "w")))
-(add-hook 'emacs-lisp-mode-hook #'(lambda () (modify-syntax-entry ?- "w")))
+;; (add-hook 'prog-mode-hook #'(lambda () (modify-syntax-entry ?_ "w")))
+;; (add-hook 'emacs-lisp-mode-hook #'(lambda () (modify-syntax-entry ?- "w")))
 
 (set-language-environment "Korean")
 (prefer-coding-system 'utf-8)
 (when window-system
   (set-fontset-font "fontset-default" '(#x1100 . #xffdc)  '("NanumGothicCoding" . "unicode-bmp"))
   (set-fontset-font "fontset-default" '(#xe0bc . #xf66e) '("NanumGothicCoding" . "unicode-bmp"))
-)
+  )
 
 (use-package dracula-theme)
-  ;; :config
-  ;; (when (window-system)
-  ;;   (load-theme 'dracula t)))
-(load-theme 'deeper-blue t)
+;; :config
+;; (when (window-system)
+;;   (load-theme 'dracula t)))
+(when window-system
+  (load-theme 'deeper-blue t))
 
 (use-package find-file-in-repository
   :config
@@ -67,7 +72,7 @@
     (add-hook 'before-save-hook 'gofmt-before-save))
   (add-hook 'go-mode-hook 'my-go-mode-hook)
   (setenv "GOPATH" "~/project/go")
-)
+  )
 
 ;; projectile
 (use-package projectile
@@ -85,13 +90,13 @@
     (global-set-key (kbd "C-c f b") 'clang-format-buffer))
   (add-hook 'c++-mode-hook 'my-c++-mode-hook)
   (add-hook 'c-mode-hook 'my-c++-mode-hook)
-)
+  )
 
 (use-package slime
   :config
   (load (expand-file-name "~/.quicklisp/slime-helper.el"))
   (setq inferior-lisp-program "sbcl")
-)
+  )
 
 (use-package evil
   :ensure t
@@ -101,14 +106,14 @@
   (setq evil-want-C-u-scroll t)
   :config
   (evil-mode 1)
-)
+  )
 
 (use-package evil-collection
   :after evil
   :ensure t
   :config
   (evil-collection-init)
-)
+  )
 
 (use-package evil-magit)
 
@@ -130,9 +135,9 @@
   ;; (defun my-cmake-define-key ()
   ;; (add-hook 'c-mode-hook 'my-cmake-define-key)
   ;; (add-hook 'c++-mode-hook 'my-cmake-define-key)
-    (global-set-key (kbd "C-c c r") 'cmake-ide-run-cmake)
-    (global-set-key (kbd "C-c c c") 'cmake-ide-compile)
-)
+  (global-set-key (kbd "C-c c r") 'cmake-ide-run-cmake)
+  (global-set-key (kbd "C-c c c") 'cmake-ide-compile)
+  )
 
 (use-package popwin
   :config
