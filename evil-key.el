@@ -7,3 +7,8 @@
   (kbd ", g p") 'helm-gtags-previous-history)
 
 (global-set-key (kbd "C-'") 'evil-switch-to-windows-last-buffer)
+
+(when (require 'cmake-ide nil 'noerror)
+  (evil-define-key 'normal prog-mode-map
+    (kbd ", c r") 'cmake-ide-run-cmake
+    (kbd ", c c") 'cmake-ide-compile))

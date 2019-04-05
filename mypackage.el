@@ -86,9 +86,7 @@
    helm-make-arguments "-j4"
    cmake-ide-build-dir "build"
    cmake-ide-cmake-opts "-DCMAKE_BUILD_TYPE=Debug -DCMAKE_EXPORT_COMPILE_COMMANDS=ON"
-   )
-  (global-set-key (kbd "C-c c r") 'cmake-ide-run-cmake)
-  (global-set-key (kbd "C-c c c") 'cmake-ide-compile))
+   ))
 
 (use-package popwin
   :config
