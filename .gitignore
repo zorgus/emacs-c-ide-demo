@@ -1,6 +1,7 @@
 auto-save-list/
 elpa/
 semanticdb/
+eshell/
 *.elc
 projectile*
 recentf
