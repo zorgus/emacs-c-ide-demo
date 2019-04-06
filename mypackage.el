@@ -1,6 +1,4 @@
 (use-package dracula-theme)
-(when window-system
-  (load-theme 'deeper-blue t))
 
 (use-package find-file-in-repository
   :config
