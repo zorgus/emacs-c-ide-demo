@@ -1,6 +1,6 @@
 (defconst my-config-base "~/.emacs.d/")
 (load (concat my-config-base "mybase.el"))
 (load (concat my-config-base "myfunc.el"))
-(load-config "mycustom.el")
-(load-config "myconfig.el")
 (load-config "mypackage.el")
+(load-config "myconfig.el")
+(load-config "mycustom.el")
