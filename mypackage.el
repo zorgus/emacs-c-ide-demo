@@ -59,16 +59,17 @@
   (setq evil-want-C-u-scroll t)
   :config
   (setq-default evil-symbol-word-search t)
-  (evil-mode 1))
+  (evil-mode enable-evil-mode))
 
 (use-package evil-collection
-  :after evil
+  :requires evil
   :ensure t
   :config
   (evil-collection-init)
   (add-hook 'prog-mode-hook #'(lambda () (load "~/.emacs.d/evil-key.el"))))
 
-(use-package evil-magit)
+(use-package evil-magit
+  :requires evil)
 
 (use-package magit)
 
