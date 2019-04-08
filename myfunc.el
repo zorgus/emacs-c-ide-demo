@@ -10,3 +10,8 @@
   (setq c-basic-offset 4)
   (setq indent-tabs-mode nil)
   (helm-gtags-mode))
+
+(defun my-clang-format-before-save ()
+  "Usage: (add-hook 'before-save-hook 'my-clang-format-before-save)."
+  (when (or (eq major-mode 'c-mode) (eq major-mode 'c++-mode))
+    (clang-format-buffer)))

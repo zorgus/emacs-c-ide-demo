@@ -40,9 +40,10 @@
 (use-package clang-format
   :config
   (defun my-c++-mode-hook ()
-    ;;(fset 'c-indent-region 'clang-format-region)
+    ;; (fset 'c-indent-region 'clang-format-region)
     (global-set-key (kbd "C-c f r") 'clang-format-region)
     (global-set-key (kbd "C-c f b") 'clang-format-buffer))
+  (add-hook 'before-save-hook 'my-clang-format-before-save)
   (add-hook 'c++-mode-hook 'my-c++-mode-hook)
   (add-hook 'c-mode-hook 'my-c++-mode-hook))
 
