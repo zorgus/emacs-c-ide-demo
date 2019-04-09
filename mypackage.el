@@ -91,3 +91,10 @@
 (use-package popwin
   :config
   (popwin-mode t))
+
+(use-package helm-ag
+  :requires helm)
+
+(use-package exec-path-from-shell
+  :config
+  (exec-path-from-shell-initialize))

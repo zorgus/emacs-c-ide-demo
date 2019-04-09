@@ -12,3 +12,7 @@
   (evil-define-key 'normal prog-mode-map
     (kbd ", c r") 'cmake-ide-run-cmake
     (kbd ", c c") 'cmake-ide-compile))
+
+(when (require 'helm-ag nil 'noerror)
+  (evil-define-key 'normal prog-mode-map
+    (kbd ", g a") 'helm-do-ag))
