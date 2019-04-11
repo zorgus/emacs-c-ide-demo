@@ -66,8 +66,7 @@
   :requires evil
   :ensure t
   :config
-  (evil-collection-init)
-  (add-hook 'prog-mode-hook #'(lambda () (load "~/.emacs.d/evil-key.el"))))
+  (evil-collection-init))
 
 (use-package evil-magit
   :requires evil)
