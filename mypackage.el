@@ -62,18 +62,16 @@
   (setq-default evil-symbol-word-search t)
   (evil-mode enable-evil-mode))
 
-(use-package evil-collection
-  :requires evil
-  :ensure t
-  :config
-  (evil-collection-init))
+(use-package general
+  :ensure t)
 
 (use-package evil-magit
   :requires evil)
 
 (use-package magit)
 
-(use-package which-key :ensure t
+(use-package which-key
+  :ensure t
   :diminish which-key-mode
   :config (progn (which-key-mode)
                  (which-key-setup-side-window-bottom)))

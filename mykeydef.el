@@ -1,20 +1,53 @@
-(global-set-key (kbd "C-'") 'evil-switch-to-windows-last-buffer)
 
-(when (my-package-install-p 'cmake-ide)
-  (evil-define-key 'normal prog-mode-map
-    (kbd ", c r") 'cmake-ide-run-cmake
-    (kbd ", c c") 'cmake-ide-compile))
+(declare-prefixes
+  "a"   "applications"
+  "b"   "buffers"
+  "f"   "files"
+  "g"   "helm-gtags"
+  "p"   "projectile"
+  "w"   "windows")
 
-(when (my-package-install-p 'helm-ag)
-  (evil-define-key 'normal prog-mode-map
-    (kbd ", g a") 'helm-do-ag))
+;; global
+(set-keys
+  "SPC" 'helm-M-x
+  "TAB" 'evil-switch-to-windows-last-buffer
+  "!"   'shell-command
+  "&"   'async-shell-command
+  "/"   'helm-do-ag
+  "v"   'er/expand-region)
 
-(when (my-package-install-p 'evil-collection)
-  (evil-define-key 'normal helm-gtags-mode-map
-    (kbd ", g C") 'helm-gtags-create-tags
-    (kbd ", g u") 'helm-gtags-update-tags
-    (kbd ", g g") 'helm-gtags-find-pattern
-    (kbd ", g d") 'helm-gtags-find-tag-from-here
-    (kbd ", g n") 'helm-gtags-next-history
-    (kbd ", g p") 'helm-gtags-previous-history)
-  )
+;; applications
+(set-keys
+  "ac"  'calc-dispatch
+  "ad"  'dired
+  "ag"  'magit
+  "aP"  'proced
+  "au"  'undo-tree-visualize)
+
+;; buffer
+(set-keys
+  "bb"  'helm-buffers-list
+  "bd"  'kill-this-buffer)
+
+(set-keys-for-major-mode 'helm-gtags-mode-map
+    "gC" 'helm-gtags-create-tags
+    "gu" 'helm-gtags-update-tags
+    "gg" 'helm-gtags-find-pattern
+    "gd" 'helm-gtags-find-tag-from-here
+    "gn" 'helm-gtags-next-history
+    "gp" 'helm-gtags-previous-history)
+
+(set-keys-for-major-mode 'prog-mode-map
+    "cc" 'cmake-ide-compile
+    "cC" 'cmake-ide-run-cmake)
+
+;; projectile
+(set-keys
+    "pp" 'helm-projectile-switch-project
+    "pf" 'helm-projectile-find-file
+    "p!" 'projectile-run-shell-command-in-root
+    "p&" 'projectile-run-async-shell-command-in-root
+    "pi" 'projectile-invalidate-cache
+    "pD" 'projectile-dired
+    "pa" 'projectile-find-other-file
+    "pg" 'helm-gtags-create-tags projectile-project-root)

@@ -3,5 +3,6 @@
 (load (concat my-config-base "myfunc.el"))
 (load-config "myconfig.el")
 (load-config "mypackage.el")
+(load-config "mykeyfunc.el")
 (load-config "mykeydef.el")
 (load-config "mycustom.el")
