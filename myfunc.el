@@ -15,3 +15,6 @@
   "Usage: (add-hook 'before-save-hook 'my-clang-format-before-save)."
   (when (or (eq major-mode 'c-mode) (eq major-mode 'c++-mode))
     (clang-format-buffer)))
+
+(defun my-package-install-p (pkg)
+  (require pkg nil 'noerror))

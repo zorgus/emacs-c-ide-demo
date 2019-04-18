@@ -1,15 +1,15 @@
 (global-set-key (kbd "C-'") 'evil-switch-to-windows-last-buffer)
 
-(when (require 'cmake-ide nil 'noerror)
+(when (my-package-install-p 'cmake-ide)
   (evil-define-key 'normal prog-mode-map
     (kbd ", c r") 'cmake-ide-run-cmake
     (kbd ", c c") 'cmake-ide-compile))
 
-(when (require 'helm-ag nil 'noerror)
+(when (my-package-install-p 'helm-ag)
   (evil-define-key 'normal prog-mode-map
     (kbd ", g a") 'helm-do-ag))
 
-(when (require 'evil-collection nil 'noerror)
+(when (my-package-install-p 'evil-collection)
   (evil-define-key 'normal helm-gtags-mode-map
     (kbd ", g C") 'helm-gtags-create-tags
     (kbd ", g u") 'helm-gtags-update-tags
