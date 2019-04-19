@@ -62,7 +62,14 @@
   (setq-default evil-symbol-word-search t)
   (evil-mode enable-evil-mode))
 
+(use-package evil-collection
+  :requires evil
+  :ensure t
+  :config
+  (evil-collection-init))
+
 (use-package general
+  :requires evil
   :ensure t)
 
 (use-package evil-magit
