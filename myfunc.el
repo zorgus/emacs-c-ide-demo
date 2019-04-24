@@ -1,5 +1,4 @@
-
-(defun load-config (file)
+(defun load! (file)
   (setq config-file (concat my-config-base file))
   (when (file-exists-p config-file)
     (load config-file)))
