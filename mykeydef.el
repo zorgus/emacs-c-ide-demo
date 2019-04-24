@@ -50,7 +50,8 @@
  "pi" 'projectile-invalidate-cache
  "pD" 'projectile-dired
  "pa" 'projectile-find-other-file
- "pg" 'helm-gtags-create-tags-root)
+ "pg" 'helm-gtags-create-tags-root
+ "pG" 'helm-gtags-create-tags)
 
 ;; files
 (set-keys

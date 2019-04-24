@@ -19,4 +19,5 @@
   (require pkg nil 'noerror))
 
 (defun helm-gtags-create-tags-root ()
+  (interactive)
   (helm-gtags-create-tags (projectile-project-root) "default"))
