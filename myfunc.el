@@ -17,3 +17,6 @@
 
 (defun my-package-install-p (pkg)
   (require pkg nil 'noerror))
+
+(defun helm-gtags-create-tags-root ()
+  (helm-gtags-create-tags (projectile-project-root) "default"))
