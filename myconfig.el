@@ -8,8 +8,8 @@
   (setq exec-path (append '("/usr/local/bin")
                           exec-path)))
 
-(setq make-backup-files nil) ; stop creating backup~ files
-(setq auto-save-default nil) ; stop creating #autosave# files
+(setq make-backup-files nil)
+(setq auto-save-default nil)
 (setq column-number-mode t)
 (setq enable-evil-mode 1)
 (when (version<= "26.0.50" emacs-version )
