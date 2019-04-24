@@ -75,7 +75,9 @@
 (use-package evil-magit
   :requires evil)
 
-(use-package magit)
+(use-package magit
+  :config
+  (evil-set-initial-state #'git-commit-mode 'insert))
 
 (use-package which-key
   :ensure t
