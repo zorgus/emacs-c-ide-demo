@@ -29,7 +29,7 @@
   "bb"  'helm-buffers-list
   "bd"  'kill-this-buffer)
 
-(set-keys-for-major-mode 'helm-gtags-mode-map
+(set-keys
     "gC" 'helm-gtags-create-tags
     "gu" 'helm-gtags-update-tags
     "gg" 'helm-gtags-find-pattern
@@ -37,7 +37,7 @@
     "gn" 'helm-gtags-next-history
     "gp" 'helm-gtags-previous-history)
 
-(set-keys-for-major-mode 'prog-mode-map
+(set-keys
     "cc" 'cmake-ide-compile
     "cC" 'cmake-ide-run-cmake)
 
