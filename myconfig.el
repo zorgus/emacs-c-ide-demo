@@ -19,6 +19,15 @@
                                 (setq linum-format "%4d \u2502 ")
                                 (set-face-attribute 'linum nil :foreground "gray"))))
 
+(when window-system
+  (blink-cursor-mode 0)
+  (scroll-bar-mode 0)
+  (tool-bar-mode 0)
+  (tooltip-mode 0)
+  (menu-bar-mode 0))
+
+(global-auto-revert-mode t)
+
 (add-hook 'c-mode-hook 'my-prog-mode-hook)
 (add-hook 'c++-mode-hook 'my-prog-mode-hook)
 

@@ -64,6 +64,7 @@
 
 (use-package evil-collection
   :requires evil
+  :custom (evil-collection-setup-minibuffer t)
   :ensure t
   :config
   (evil-collection-init))
@@ -91,7 +92,7 @@
    helm-make-build-dir "build"
    helm-make-arguments "-j4"
    cmake-ide-build-dir "build"
-   cmake-ide-cmake-opts "-DCMAKE_BUILD_TYPE=Debug -DCMAKE_EXPORT_COMPILE_COMMANDS=ON"
+   cmake-ide-cmake-args '("-DCMAKE_BUILD_TYPE=Debug")
    ))
 
 (use-package popwin
