@@ -19,6 +19,8 @@
                                 (setq linum-format "%4d \u2502 ")
                                 (set-face-attribute 'linum nil :foreground "gray"))))
 
+(show-paren-mode 1)
+
 (when window-system
   (blink-cursor-mode 0)
   (scroll-bar-mode 0)
