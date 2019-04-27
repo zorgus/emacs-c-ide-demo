@@ -110,3 +110,10 @@
   :config
   (add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
   )
+
+(use-package beacon
+  :config
+  (beacon-mode 1)
+  (setq beacon-blink-delay 0.0)
+  (setq beacon-blink-duration 0.2)
+  )
