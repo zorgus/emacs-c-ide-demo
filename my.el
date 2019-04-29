@@ -4,5 +4,6 @@
 (load! "myconfig.el")
 (load! "mypackage.el")
 (load! "mykeyfunc.el")
-(load! "mykeydef.el")
+(load! "myevilkeys.el")
+(load! "myemacskeys.el")
 (load! "mycustom.el")

@@ -11,7 +11,7 @@
 (setq make-backup-files nil)
 (setq auto-save-default nil)
 (setq column-number-mode t)
-(setq enable-evil-mode 1)
+(setq enable-evil-mode 0)
 (when (version<= "26.0.50" emacs-version )
   (add-hook 'prog-mode-hook #'(lambda () (display-line-numbers-mode t))))
 (unless (version<= "26.0.50" emacs-version)
