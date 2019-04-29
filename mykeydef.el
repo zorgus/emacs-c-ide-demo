@@ -4,6 +4,7 @@
  "b"   "buffers"
  "f"   "files"
  "g"   "helm-gtags"
+ "h"   "helm"
  "p"   "projectile"
  "w"   "windows")
 
@@ -65,3 +66,10 @@
 (set-keys
  "ff" 'helm-find-files
  "fs" 'save-buffer)
+
+;; helm
+(set-keys
+ "ho" 'helm-swoop
+ "hr" 'helm-regexp
+ "hb" 'helm-resume
+ )
