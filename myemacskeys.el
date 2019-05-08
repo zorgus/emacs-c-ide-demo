@@ -8,3 +8,10 @@
   "C-c g n" 'helm-gtags-next-history
   "C-c g p" 'helm-gtags-previous-history
   )
+
+(general-emacs-define-key global-map
+  "C-x TAB" 'evil-switch-to-windows-last-buffer
+  "C-c /"   'helm-do-ag
+  "C-c C-/"   'helm-swoop
+  "C-c C-k" 'evil-yank-line
+  )

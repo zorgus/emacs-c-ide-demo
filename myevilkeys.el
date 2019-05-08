@@ -14,7 +14,6 @@
  "TAB" 'evil-switch-to-windows-last-buffer
  "!"   'shell-command
  "&"   'async-shell-command
- "/"   'helm-do-ag
  "v"   'er/expand-region)
 
 ;; applications
@@ -72,4 +71,5 @@
  "ho" 'helm-swoop
  "hr" 'helm-regexp
  "hb" 'helm-resume
+ "ha" 'helm-do-ag
  )
