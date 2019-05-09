@@ -14,7 +14,8 @@
  "TAB" 'evil-switch-to-windows-last-buffer
  "!"   'shell-command
  "&"   'async-shell-command
- "v"   'er/expand-region)
+ "/"   'helm-do-ag-project-root
+ )
 
 ;; applications
 (set-keys
@@ -72,4 +73,9 @@
  "hr" 'helm-regexp
  "hb" 'helm-resume
  "ha" 'helm-do-ag
+ )
+
+;; general
+(general-define-key
+ :states 'normal
  )

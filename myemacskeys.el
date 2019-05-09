@@ -12,7 +12,8 @@
 (general-emacs-define-key global-map
   "C-x TAB" 'evil-switch-to-windows-last-buffer
   "C-c /"   'helm-do-ag
-  "C-c C-/"   'helm-swoop
+  "C-c C-/" 'helm-swoop
+  "C-s"     'helm-swoop
   "C-c C-k" 'evil-yank-line
   )
 
