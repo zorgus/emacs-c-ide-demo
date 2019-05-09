@@ -15,7 +15,6 @@
  "!"   'shell-command
  "&"   'async-shell-command
  "/"   'helm-do-ag-project-root
- "o"   'helm-swoop-from-evil-search
  )
 
 ;; applications
