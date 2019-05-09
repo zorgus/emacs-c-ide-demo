@@ -15,3 +15,7 @@
   "C-c C-/"   'helm-swoop
   "C-c C-k" 'evil-yank-line
   )
+
+(general-emacs-define-key c-mode-map
+  "C-c C-c"   'comment-or-uncomment-region
+  )
