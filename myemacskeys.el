@@ -17,6 +17,6 @@
   "C-c C-k" 'evil-yank-line
   )
 
-(general-emacs-define-key c-mode-map
+(general-emacs-define-key prog-mode-map
   "C-c C-c"   'comment-or-uncomment-region
   )
